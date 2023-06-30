@@ -18,6 +18,7 @@
  * @return {number[]}
  */
 var postorderTraversal = function(root) {
+/*     //递归法
     let result = [];
     const dfs = function(root){
         if(root==null) return;
@@ -26,7 +27,22 @@ var postorderTraversal = function(root) {
         result.push(root.val);
     }
     dfs(root); //只有一个参数是因为我们在js中使用闭包
-    return result;
+    return result; */
+    //迭代法，用栈
+    let result = [];
+    if(root==null) return result;
+    let stack =[root];
+    while(stack.length){
+        node = stack.pop();
+        result.push(node.val);
+        if(node.left){
+            stack.push(node.left);
+        }
+        if(node.right){
+            stack.push(node.right);
+        }
+    }
+    return result.reverse();
 };
 // @lc code=end
 

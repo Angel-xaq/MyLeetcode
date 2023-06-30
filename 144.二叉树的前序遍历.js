@@ -18,7 +18,7 @@
  * @return {number[]}
  */
 var preorderTraversal = function(root) {
-    //递归法
+/*     //递归法
     let result = [];
     const dfs = function(root){
         if(root==null) return;
@@ -27,6 +27,21 @@ var preorderTraversal = function(root) {
         dfs(root.right);
     }
     dfs(root); //只有一个参数是因为我们在js中使用闭包
+    return result; */
+    //迭代法 用栈
+    let result =[];
+    if(root==null) return result;
+    let stack = [root];
+    while(stack.length){
+        node = stack.pop();
+        result.push(node.val);
+        if(node.right){
+            stack.push(node.right);
+        }
+        if(node.left){
+            stack.push(node.left);
+        }
+    }
     return result;
 };
 // @lc code=end

@@ -18,6 +18,7 @@
  * @return {number[]}
  */
 var inorderTraversal = function(root) {
+    /* //递归法
     let result = [];
     const dfs = function(root){
         if(root==null) return;
@@ -26,6 +27,22 @@ var inorderTraversal = function(root) {
         dfs(root.right);
     }
     dfs(root); //只有一个参数是因为我们在js中使用闭包
+    return result; */
+    //迭代法，用指针！
+    let result = [];
+    let stack = [];
+    let cur = root;
+    while(stack.length ||cur){
+        if(cur){
+            stack.push(cur);
+            cur=cur.left;
+        }
+        else{
+            cur = stack.pop();
+            result.push(cur.val);
+            cur=cur.right;
+        }
+    }
     return result;
 };
 // @lc code=end
