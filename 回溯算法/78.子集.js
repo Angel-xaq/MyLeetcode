@@ -13,7 +13,6 @@ var subsets = function(nums) {
     let result = [];
     let stack = [];
     const backtrack = function(start,nums){
-        
         result.push([...stack]);  //*重要，最开始执行放入[]空的
         
         for(let i=start;i<nums.length;i++){
