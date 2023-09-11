@@ -35,19 +35,100 @@
 // }
 // test();
 // console.log(result);
-function testMultiPack() {
-    const bagWeight = 10;
-    const weight = [1, 3, 4];
-    const value = [15, 20, 30];
-    const nums = [2, 3, 2];
-    const dp = Array(bagWeight+1).fill(0);
-    for (let i = 0; i < weight.length; i++) {  // 遍历物品
-        for (let k = 0; k < nums[i]; k++) {     // 遍历物品个数
-            for (let j = bagWeight; j >= weight[i]; j--) {  // 遍历背包容量
-                dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);
-            }
+// function testMultiPack() {
+//     const bagWeight = 10;
+//     const weight = [1, 3, 4];
+//     const value = [15, 20, 30];
+//     const nums = [2, 3, 2];
+//     const dp = Array(bagWeight+1).fill(0);
+//     for (let i = 0; i < weight.length; i++) {  // 遍历物品
+//         for (let k = 0; k < nums[i]; k++) {     // 遍历物品个数
+//             for (let j = bagWeight; j >= weight[i]; j--) {  // 遍历背包容量
+//                 dp[j] = Math.max(dp[j], dp[j - weight[i]] + value[i]);
+//             }
+//         }
+//     }
+//     console.log(dp);
+//   }
+//   testMultiPack();
+
+
+// var inputs1 = [5,2,4];
+// var inputs =[];
+// inputs.push([...inputs1]);
+// var result = inputs1.map((a)=>a*a);
+// for (let r of result){
+//     console.log(r);
+// }
+
+// var res = new Set(inputs);
+//多行输出！
+// var element = inputs.map( (e) => (e) );
+// console.log(element);
+
+// Array.from(res).sort((a,b)=>a-b).forEach(item=>console.log(item));
+
+// function isSu(num){
+//     let flag=0;
+//     for(let j=1;j<=num;j++){
+//         if(num%j==0){
+//             flag++;
+//         }
+//     }
+//     if(flag==2){
+//         return true;
+//     }
+//     else{
+//         return false;
+//     }
+// }
+function isSu(num){
+    let flag=0;
+    for(let j=2;j<=Math.sqrt(num);j++){
+        if(num%j==0){
+            flag=1;
+            return false;
         }
     }
-    console.log(dp);
-  }
-  testMultiPack();
+    if(flag==0){
+        return true;
+    }
+}
+function jisuan(n){
+    let used = Array(n).fill(false);
+    let temp=[];
+    let count=0;
+    let sum=0;
+    let usenum=0;
+    let result =[];
+    function backtrack(n,used,temp){
+        if(temp.length==n){
+            result.push([...temp]);
+            count++;
+            return;
+        }
+        for(let i=0;i<n;i++){
+            if(used[i]){
+                continue;
+            }
+            usenum=i+1;
+            if(temp.length>0){
+                sum=usenum+temp[temp.length-1];
+                if(isSu(sum)){
+                    continue;
+                }
+            }
+            temp.push(usenum);
+            used[i]=true;
+            backtrack(n,used,temp);
+            temp.pop();
+            used[i]=false;
+        }
+    }
+    backtrack(n,used,temp);
+    console.log(count);
+}
+jisuan(5);
+
+console.log(1,2,'\n');
+console.log(1,2,'\n');
