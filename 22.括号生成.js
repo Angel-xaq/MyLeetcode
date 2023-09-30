@@ -15,7 +15,7 @@ var generateParenthesis = function(n) {
     if(n===0) return result;
     let track='';
     function backtrack(left, right, track, result) {
-        if (right < left) return;  // 若右括号剩下的多，说明不合法
+        if (right < left) return;  // 若左括号剩下的多，说明不合法
         if (left < 0 || right < 0) return;  // 数量小于 0 肯定是不合法的
         if (left == 0 && right == 0) {
             result.push(track);
