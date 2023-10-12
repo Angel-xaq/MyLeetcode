@@ -31,7 +31,7 @@ var threeSum = function(nums) {
             else{
                 result.push([nums[i],nums[left],nums[right]]);  //存入结果中
                 while(nums[left]===nums[left+1]){   //b的去重
-                    left--;
+                    left++;
                 }  
                 while(nums[right]===nums[right-1]){  //c的去重
                     right--;

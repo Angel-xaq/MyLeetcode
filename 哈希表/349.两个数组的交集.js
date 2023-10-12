@@ -12,6 +12,7 @@
  */
 var intersection = function(nums1, nums2) {
     //官方思路 用set   key是唯一的,不重复的
+    //下面这个交换可以不要，只是为了提高效率，让nums2是长度小的，这样循环执行长度小
     if(nums1.length<nums2.length){
         const temp=nums1;
         nums1=nums2;
