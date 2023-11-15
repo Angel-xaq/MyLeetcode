@@ -10,6 +10,7 @@
  * @return {number[][]}
  */
 var threeSum = function(nums) {
+    //双指针法，要注意排序和去重
     let result = [];
     let len=nums.length;
     if(nums==null || len <3)
